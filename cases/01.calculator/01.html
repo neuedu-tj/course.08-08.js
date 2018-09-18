@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        div { height: 40px ; width: 40px ; margin: 4px; display: inline-block; background-color: deepskyblue ; color: white;text-align: center;line-height: 40px}
+
+    </style>
+
+
+</head>
+<body>
+
+
+    NUM1 : <input type="text" id="num1" name=""><br><br>
+    NUM2 : <input type="text" id="num2" name=""><br><br>
+    SUM-><input type="text" id="sum" name=""><br><br>
+
+    <hr>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>0</div>
+
+    <hr>
+
+    <input type="button" value="+" onclick="handler('+')">
+    <input type="button" value="-"  onclick="handler('-')">
+    <input type="button" value="*"  onclick="handler('*')">
+    <input type="button" value="/"  onclick="handler('/')">
+
+    <hr>
+
+<input id="btn" type="button" value="计算" onclick="foo()">
+
+
+
+</body>
+</html>
+
+<script>
+
+
+    function handler(type) {
+
+        alert(type)
+
+        var num1 = document.getElementById("num1").value  // 此刻的 value  是一个  string
+        alert(parseInt(num1)+10)
+
+    }
+
+
+    function foo() {
+        var sum = 100;
+
+        document.getElementById("sum").value = sum;
+
+    }
+
+
+
+
+</script>
