@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <input id="btn" value="click me"  type="button">
+
+</body>
+</html>
+
+<script>
+
+    // 当页面加载时
+    window.onload = function() {
+
+        console.log("页面加载的时候.....")
+
+    }
+
+    var btn = document.getElementById("btn");
+
+    //当被点击时
+    // btn.onclick = function() {
+    //     alert("hello")
+    // };
+
+
+    btn.ondblclick = function() {
+        alert("你双击了 按钮")
+    };
+
+    //
+    btn.onmouseover= function() {
+        console.log("过来啦.......")
+    };
+
+
+
+
+</script>

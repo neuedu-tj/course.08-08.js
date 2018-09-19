@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    Name : <input id="name" value=""  > <span id="label_name"></span> <br><br><!-- placeholder="please enter your name"-->
+    E-mail : <input id="email"><span id="label_email">您填写的必须是英文或数字</span>
+
+    <br><br>
+
+    <select name="" id="sel">
+        <option value="CN">China</option>
+        <option value="JP">Japan</option>
+        <option value="US">US</option>
+        <option value="UK">UK</option>
+    </select>
+
+    <select name="" id="background">
+        <option value="red">red</option>
+        <option value="blue">blue</option>
+        <option value="green">green</option>
+    </select>
+
+    <br><br><br>
+
+    <label ><input name="skills" value="java" type="checkbox" class="sk">Java</label>
+    <label ><input name="skills" value="redis" type="checkbox" class="sk" checked>Redis</label>
+    <label ><input name="skills" value="springBoot" type="checkbox" class="sk">SpringBoot</label>
+    <label ><input name="skills" value="es6" type="checkbox" class="sk" checked >EcmaScript-6</label>
+    <br><br>
+
+    <input id="show_skills" value="显示选择的 skills" type="button">
+
+
+</body>
+</html>
+
+<script>
+
+
+    window.onload = function() {
+
+
+        var name = $("name");
+
+        name.onchange = function() {
+            console.log("changed ....")
+        };
+
+        name.onselect = function() {
+            console.log("禁止复制")
+        };
+
+        name.onfocus = function() {
+            $("label_name").innerHTML = "您填写的必须是英文或数字 , 长度大于 6 位 ";
+        };
+        name.onblur = function() {
+            var content = this.value;
+            if(content.length >=6) {
+                $("label_name").innerHTML = "OK";
+            } else {
+                $("label_name").innerHTML = "输入有误";
+            }
+        };
+
+
+        var sel = $("sel");
+
+        sel.onchange = function() {
+            console.log(this.value)
+        };
+
+        var background = $("background");
+        background.onchange = function() {
+            var color = this.value;
+
+            document.body.style.backgroundColor = color;
+        }
+
+
+        show_skills.onclick = function() {
+            var arr = [];
+            var skills = document.getElementsByClassName("sk");
+            for(var i=0 ; i<skills.length ; i++) {
+                if(skills[i].checked) {
+                    arr.push( skills[i].value )
+                }
+            }
+
+            console.log( arr )
+        }
+
+
+
+    };
+
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+
+</script>
