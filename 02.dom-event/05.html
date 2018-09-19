@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h4>提交按钮页面 </h4>
+
+<form action="http://www.baidu.com/s" id="form" >
+
+
+    KeyWord : <input type="text" id="wd" name="wd">
+
+    <input type="submit" value="百度一下">
+
+
+</form>
+
+</body>
+</html>
+
+<script>
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    window.onload = function() {
+
+
+        $("form").onsubmit = function() {
+
+            if(confirm("确认要提交么 ? ")) {
+
+                if( $("wd").value != ""){
+
+                    return true;
+                } else {
+                    $("wd").focus();
+                    return false;
+                }
+
+
+
+            } else {
+                return false;
+            }
+
+        }
+
+    }
+
+
+
+
+</script>

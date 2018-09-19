@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h4>普通按钮提交</h4>
+
+    <form action="http://www.baidu.com/s" id="form">
+
+
+        KeyWord : <input type="text" id="wd" name="wd">
+
+        <input type="button"  id="search" name="wd" value="百度一下">
+
+
+    </form>
+
+</body>
+</html>
+
+<script>
+
+    window.onload = function() {
+
+        $("search").onclick = function() {
+
+            if($("wd").value == "") {
+                $("wd").focus();
+                return;
+            } else {
+                $("form").submit();
+            }
+
+
+        }
+
+    }
+
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+
+
+</script>
