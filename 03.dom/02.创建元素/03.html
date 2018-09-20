@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+
+    var img = document.createElement("img");
+    img.src="////";
+    img.className = "class1 class2  class3"
+
+    var nickname = $$("div");
+    nickname.innerHTML = "???";
+    nickname.className = "";
+
+    var content = $$("div");
+    content.innerHTML = "????";
+    content.onclick = function () {
+
+    };
+
+
+
+    var item = $$("div");
+    item.appendChild(img);
+    item.appendChild(nickname);
+    item.appendChild(content);
+
+
+
+    $("box").appendChild(item);
+
+    function $$(tag ) {
+        return document.createElement(tag);
+    }
+
+
+
+</script>

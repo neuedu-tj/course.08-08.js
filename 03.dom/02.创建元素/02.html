@@ -10,6 +10,10 @@
             color: crimson;
             font-family: 微软雅黑;
             font-size: 16px;
+
+            border: 1px solid black;
+
+            width: 200px;
         }
 
 
@@ -36,19 +40,26 @@
     window.onload = function() {
         btn.onclick = function () {
 
-            var content = $("content");
+            let content = $("content");
 
             // 创建一个 子层 , 并追加到   storage 层中
 
-            var div = document.createElement("div");
-            // div.innerHTML = "<a href='#'>"+content.value+"</a>";
-            div.innerText="<a>baidu</a>";
-
+            let div = document.createElement("div");
+            div.innerHTML = "<a href='#'>"+content.value+"</a>";
             div.className = "color";
 
-            div.onclick = function() {
-                alert(this.innerHTML);
+            let span = document.createElement("span");
+            span.innerText = "✖";
+
+            span.onclick = function(){
+                //原生JS 都是基于 父元素 对子元素的删除
+                $("storage").removeChild(this.parentNode)
             };
+
+
+            div.appendChild(span);
+
+
 
             $("storage").appendChild(div);
 

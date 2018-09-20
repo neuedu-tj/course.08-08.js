@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <ul id="d">
+        <li>java</li><!-- HAHA-->
+        <li id="redis">redis</li>
+        <li><a id="boot">spring-boot</a></li>
+        <li>es6</li>
+    </ul>
+
+    <ul id="d2">
+
+    </ul>
+
+
+    <ul id="u"><li>spark</li></ul>
+
+</body>
+</html>
+
+<script>
+
+    let d = $("d");
+
+    console.log("查看某个子节点的 类型 : "+d.childNodes[0].nodeType);  //   nodeType : 1 element ; 3 text ; 8 : comment ->
+    console.log("查看子节点的个数 : " + d.childNodes.length);
+
+    console.log("输出 孩子们 : "+ d.children);
+
+
+    let elements = d.children;
+    for (let i = 0; i < elements.length ; i++) {
+        console.log(elements[i].innerText)
+    }
+
+
+
+    console.log("查看 d2 有没有子节点 :  "+$("d2").hasChildNodes());
+
+
+    console.log("boot 的父节点是 : " );
+    console.log($("boot").parentNode.parentNode);
+
+
+
+    console.log("-----找邻居-----");
+
+    console.log("redis 的下一个邻居 : " +$("redis").nextSibling.nextSibling.innerText);   //  坑 :  下一个邻居是  文本 .
+
+    console.log("redis 的上一个邻居 : " +$("redis").previousSibling.previousSibling.previousSibling.innerText);
+
+
+    console.log("#u 的第一个子节点" + $("u").firstChild.innerText );
+
+    function $(id) {
+        return document.getElementById(id)
+    }
+
+
+
+
+</script>
