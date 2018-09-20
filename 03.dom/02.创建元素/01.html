@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .color {
+            color: crimson;
+            font-family: 微软雅黑;
+            font-size: 16px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <input id="content" type="text">
+    <br>
+    <input type="button" id="btn" value="add content">
+    <hr>
+
+    <div id="storage"></div>
+
+
+</body>
+</html>
+
+<script>
+
+
+    window.onload = function() {
+        btn.onclick = function () {
+
+            var content = $("content");
+
+            // 创建一个 子层 , 并追加到   storage 层中
+
+            var div = document.createElement("div");
+            div.innerHTML = "<a href='#'>"+content.value+"</a>";
+            div.className = "color";
+
+            div.onclick = function() {
+                alert(this.innerHTML);
+            };
+
+            $("storage").appendChild(div);
+
+        }
+    };
+
+
+    function $(id) {
+        return document.getElementById(id)
+    }
+
+</script>

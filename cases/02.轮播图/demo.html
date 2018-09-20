@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        #container {
+            height: 300px;
+            width: 400px;
+            background-image: url(img/2.jpg);
+            background-position: center;
+            background-size: contain;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+    <div id="container">
+
+     </div>
+
+    <hr>
+
+    <input id="btn" value="change" type="button">
+
+</body>
+</html>
+
+<script>
+
+
+    window.onload = function() {
+
+        var task ;
+
+        task = setInterval("change_img()" , 1000);
+
+
+        container.onmouseover = function() {
+            window.clearInterval(task);
+        }
+
+        container.onmouseout = function() {
+            task = setInterval("change_img()" ,1000);
+        }
+
+
+    };
+
+    var index = 1;
+    function change_img() {
+
+        if(index>6) index = 1;
+
+        $("container").style.backgroundImage = "url(img/"+index+".jpg)"
+
+        index++;
+    }
+
+
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+</script>

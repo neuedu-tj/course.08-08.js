@@ -6,8 +6,28 @@
 
     <style>
 
+        * {
+
+            font-family: 微软雅黑;
+        }
 
         div { height: 40px ; width: 40px ; margin: 4px; display: inline-block; background-color: deepskyblue ; color: white;text-align: center;line-height: 40px}
+
+        div:active {
+            background-color: lightseagreen;
+            box-shadow: 0px 0px 12px black inset;
+        }
+
+        .ipt {
+            height: 20px; width: 100px;
+            background-color: darkgoldenrod;
+            color: lightgoldenrodyellow; border: none;
+            border-radius: 5px; text-indent: 4px;
+        }
+
+        #result {background-color: lightgoldenrodyellow ; color: black ; box-shadow: 0px 0px 5px grey inset; height: 40px}
+
+
 
     </style>
 
@@ -15,34 +35,33 @@
 </head>
 <body>
 
+    <br><br><br>
 
-    NUM1 : <input type="text" id="num1" name=""><br><br>
-    NUM2 : <input type="text" id="num2" name=""><br><br>
-    SUM-><input type="text" id="sum" name=""><br><br>
-
-    <hr>
-
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-    <div>7</div>
-    <div>8</div>
-    <div>9</div>
-    <div>0</div>
+    NUM1 : <input type="text" id="num1" class="ipt">
+    NUM2 : <input type="text" id="num2" class="ipt">
+    SUM  : <input type="text" id="result" class="ipt"><br><br>
 
     <hr>
 
-    <input type="button" value="+" onclick="handler('+')">
-    <input type="button" value="-"  onclick="handler('-')">
-    <input type="button" value="*"  onclick="handler('*')">
-    <input type="button" value="/"  onclick="handler('/')">
-
-    <hr>
-
-<input id="btn" type="button" value="计算" onclick="foo()">
+    <div onclick="append(1)">1</div>
+    <div onclick="append(2)">2</div>
+    <div onclick="append(3)">3</div>
+    <div onclick="type('+')">+</div>
+    <br>
+    <div onclick="append(4)">4</div>
+    <div onclick="append(5)">5</div>
+    <div onclick="append(6)">6</div>
+    <div onclick="type('-')">-</div>
+    <br>
+    <div onclick="append(7)">7</div>
+    <div onclick="append(8)">8</div>
+    <div onclick="append(9)">9</div>
+    <div onclick="type('*')">*</div>
+    <br>
+    <div onclick="clean()">clear</div>
+    <div onclick="append(0)">0</div>
+    <div onclick="calculator()">=</div>
+    <div onclick="type('/')">/</div>
 
 
 
@@ -52,21 +71,63 @@
 <script>
 
 
-    function handler(type) {
+    var  num1 = 0;
+    var  num2 = 0;
+    var  temp = "";
 
-        alert(type)
+    var result = 0;
+    var  operation ;
 
-        var num1 = document.getElementById("num1").value  // 此刻的 value  是一个  string
-        alert(parseInt(num1)+10)
+    function append(str) {
+        temp += str;
+        if(operation==null) {
+            document.getElementById("num1").value = temp;
+        } else {
+            document.getElementById("num2").value = temp;
+        }
 
     }
 
+    function type(o) {
+        operation = o;
+        temp = "";
+    }
 
-    function foo() {
-        var sum = 100;
+    function  calculator() {
 
-        document.getElementById("sum").value = sum;
+        num1 = parseInt(document.getElementById("num1").value);
+        num2 = parseInt(document.getElementById("num2").value);
 
+
+        switch (operation) {
+            case '+' :
+                result = num1 + num2;
+                break;
+            case '-' :
+                result = num1 - num2;
+                break;
+            case '*' :
+                result = num1 * num2;
+                break;
+            case '/' :
+                result = num1 / num2;
+                break;
+        }
+
+        document.getElementById("result").value = result
+
+        // clean();
+
+    }
+
+    function  clean() {
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("result").value = "";
+        num1 = 0;
+        num2 = 0;
+        operation = null;
+        result = 0;
     }
 
 

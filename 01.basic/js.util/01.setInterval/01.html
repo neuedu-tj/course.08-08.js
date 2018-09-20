@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="btn_start" value="start" type="button">
+    <input id="btn_stop" value="stop"  type="button">
+
+</body>
+</html>
+
+<script>
+    let task;
+    btn_start.onclick = function() {
+         task = setInterval(function(){
+            console.log("Hello ")
+        } , 200 );
+    }
+
+    btn_stop.onclick = function() {
+        window.clearInterval(task);
+    }
+
+
+
+</script>
