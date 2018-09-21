@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        * {
+            font-family: 微软雅黑;
+        }
+
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        #container {
+            height: 500px;
+            width: 600px;
+            border: 1px slategray solid;
+
+
+        }
+        #msg {
+            margin: 0 auto;
+            height: 100px;
+            width: 300px;
+            box-shadow: 0px 0px 10px gray inset;
+            border-radius: 2px;
+
+            text-indent: 10px;
+        }
+        #button {
+            margin: 0 auto;
+            height: 40px;
+            width: 300px;
+            background-color: lightseagreen;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            color: white;
+        }
+
+        #items {
+
+
+            height: 300px ;
+            margin: 0 auto;
+
+            width: 300px;
+
+            border: 1px solid darkblue;
+
+            overflow: scroll;
+        }
+
+        .item {
+            min-height: 50px;
+            max-height: 300px;
+
+            margin: 10px;
+            background-color: lightblue;
+
+            font-weight: 200;
+            font-size: 14px;
+
+            text-indent: 10px;
+        }
+
+        .comment_area {
+            background-color: slategray;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input {
+            background-color: coral;
+            border: none;
+            text-indent: 4px;
+            font-size: 12px;
+            flex: 1;
+            margin: 10px;
+        }
+
+        .btn {
+            background-color: lightseagreen;
+            border: none;
+            margin: 10px;
+        }
+
+        .comments {
+            background-color: deepskyblue;
+            color: black;
+        }
+
+        .comment {
+            border: deepskyblue 1px solid;
+            margin: 4px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+    <div id="container">
+        <br>
+        <div id="msg" contenteditable="true"></div>
+        <br>
+        <div id="button">Send</div>
+
+        <hr>
+
+        <div id="items"></div>
+
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+   window.onload = function() {
+
+        $("button").onclick = function() {
+
+            //构造一个  .item  层
+            let item = $$("div");
+            item.className = "item";
+
+            //构建时间
+            let item_time = $$("div");
+            item_time.innerText = new Date().getFormatDate(2);
+
+            //构建 内容
+            let content = $$("div");
+            content.innerText = $("msg").innerText;
+
+            //构建 留言 (的点击按钮)   [  comment ]
+            let btn_comment = $$("div");
+            btn_comment.style.textAlign = "right";
+            btn_comment.innerText = "comment";
+
+            btn_comment.onclick = function() {
+                if( _$("comment_area").length!=0) {  // 展开的之后  , 将删除
+                    this.parentNode.removeChild(_$("comment_area")[0]);
+                } else {                // 创建
+                    this.parentNode.appendChild(buildCommentDiv());
+                }
+
+            };
+
+            let comments = $$("div");
+            comments.className = "comments";
+
+
+
+            item.appendChild(item_time);
+            item.appendChild(content);      //留言内容
+            item.appendChild(btn_comment);  //评论区的控制按钮
+            item.appendChild(comments);  //评论区
+
+            $("items").appendChild(item);
+
+        }
+
+   };
+
+
+    /**
+     * 构造 评论区的 div
+     * */
+   function buildCommentDiv() {
+       let comment_area = $$("div");
+       comment_area.className = "comment_area";
+
+       let input = $$("input");
+       input.className = "input";
+
+       let btn = $$("input")
+       btn.className = "btn";
+       btn.type = "button";
+       btn.value = "send ";
+
+       btn.onclick = function() {
+
+            let comment = $$("div");   //创建深蓝色区域
+            comment.innerText = new Date().getFormatDate(1) + " : " + this.previousSibling.value;
+
+            this.parentNode.previousSibling.appendChild(comment);
+            //  删除评论区
+            this.parentNode.parentNode.removeChild(_$("comment_area")[0]);
+       };
+
+
+       comment_area.appendChild(input);
+       comment_area.appendChild(btn);
+        return comment_area;
+   }
+
+
+
+
+
+
+
+
+   function $(id) {
+       return document.getElementById(id);
+   }
+
+   function $$(tag) {
+       return document.createElement(tag);
+   }
+
+   function _$(className) {
+       return document.getElementsByClassName(className);    // []
+   }
+
+   Date.prototype.getFormatDate  = function(type) {
+       let now = new Date();
+       if(type === 1) {
+           return now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+       } else if(type === 2 ) {
+           return now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+       } else {
+           return now;
+       }
+
+   }
+
+</script>

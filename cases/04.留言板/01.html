@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        * {
+            font-family: 微软雅黑;
+        }
+
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        #container {
+            height: 500px;
+            width: 600px;
+            border: 1px slategray solid;
+
+
+        }
+        #msg {
+            margin: 0 auto;
+            height: 100px;
+            width: 300px;
+            box-shadow: 0px 0px 10px gray inset;
+            border-radius: 2px;
+
+            text-indent: 10px;
+        }
+        #button {
+            margin: 0 auto;
+            height: 40px;
+            width: 300px;
+            background-color: lightseagreen;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            color: white;
+        }
+
+        #items {
+
+
+            height: 300px ;
+            margin: 0 auto;
+
+            width: 300px;
+
+            border: 1px solid darkblue;
+
+            overflow: scroll;
+        }
+
+        .item {
+            height: 100px;
+
+            margin: 10px;
+            background-color: lightblue;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+    <div id="container">
+        <br>
+        <div id="msg" contenteditable="true"></div>
+        <br>
+        <div id="button">Send</div>
+
+        <hr>
+
+        <div id="items"></div>
+
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+   window.onload = function() {
+
+        $("button").onclick = function() {
+
+            //获取 写了什么留言
+            var content = $("msg").innerText;
+
+            //构造一个  .item  层
+            var item = $$("div");
+            item.className = "item";
+            item.innerHTML = new Date().getGoodDate() + "<br>" + content;
+
+            //在构造一个 删除
+            var remove = $$("div");
+            remove.innerHTML = "✖";
+            remove.onclick = function() {
+                   if(confirm("确定要删除 ? ")) {
+                       $("items").removeChild(this.parentNode);
+                   } else {
+
+                   }
+            };
+
+            item.appendChild(remove);
+
+            //将  .item  追加到   items 层
+
+            $("items").appendChild(item);
+
+        }
+
+   };
+
+   function $(id) {
+       return document.getElementById(id);
+   }
+
+   function $$(tag) {
+       return document.createElement(tag);
+   }
+
+   Date.prototype.getGoodDate = function() {
+
+       let now = new Date();
+
+       return now.getFullYear()+"-"+(now.getMonth()+1)
+   }
+
+
+</script>
