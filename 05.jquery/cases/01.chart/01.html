@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        #wrap {
+            display: flex;
+
+            width: 400px;
+            height: 400px;
+
+            justify-content: space-around;
+            align-items: flex-end;
+
+            border: 1px solid crimson;
+        }
+
+        .item {
+            width: 40px;
+            background-color: deepskyblue;
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <div id="wrap">
+
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+
+    </div>
+
+</body>
+</html>
+<script src="../../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        $(".item").each(function(index , element) {
+            let height = Math.floor(Math.random() * 400);
+            $(element).height(height);
+
+            if(height <= 400 * .2) {
+                $(element).css("background-color" , "red");
+            } else if(height >= 400 * .8) {
+                $(element).css("background-color" , "green");
+            }
+
+        })
+
+
+
+    })
+
+
+</script>
