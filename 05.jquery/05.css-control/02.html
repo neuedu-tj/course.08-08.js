@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        #target {
+            height: 100px;
+            width: 100px;
+            background-color: lightcoral;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h4>
+        隐藏 与 显示
+    </h4>
+
+    <hr>
+
+
+    <div id="target"></div>
+
+
+    <hr>
+
+    <input type="button" id="hide" value="hide">
+    <input type="button" id="toggle" value="toggle">
+
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        $("#hide").click(function(){
+            $("#target").hide();
+        });
+
+        $("#toggle").click(function(){
+            $("#target").toggle(800 , function(){
+                alert("动画执行完毕 , 我是回调函数 ... . . . . . ")
+            });
+        });
+
+    })
+
+</script>

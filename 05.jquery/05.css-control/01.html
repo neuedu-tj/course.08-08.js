@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .d1 {
+            height: 100px;
+             width: 100px;
+            background-color: lightseagreen;
+            margin: 10px;
+        }
+        .d2 {
+            height: 50px;
+            width:  50px;
+            background-color: lightcoral;
+            margin: 10px;
+        }
+        .d3 {
+            font-size: 40px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <input type="button" id="change_class" value="change_class">
+
+    <hr>
+    <div class="d1">Hello</div>
+    <div class="d1">World</div>
+
+
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+        $("#change_class").click(function(){
+
+            $(".d1").removeClass("d1").addClass("d2").addClass("d3");
+
+        })
+    })
+
+</script>

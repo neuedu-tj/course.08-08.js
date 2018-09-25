@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #d {
+            height: 100px;
+            width: 100px;
+            background-color: deepskyblue;
+            color: white;
+            padding: 10px;
+            border: 1px crimson solid;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="d">Jquery</div>
+
+</body>
+</html>
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        $("#d").height(200)
+
+        // console.log("height : " + $("#d").height());
+        // console.log("innerHeight : " + $("#d").innerHeight());
+        // console.log("outerHeight : " + $("#d").outerHeight());
+        // console.log("outerHeight(true) : " + $("#d").outerHeight(true));
+
+    })
+
+</script>

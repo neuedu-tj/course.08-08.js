@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        #target {
+            height: 100px;
+            width: 100px;
+            background-color: lightcoral;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h4>
+        toggle ......
+    </h4>
+
+    <hr>
+
+
+    <div id="target"></div>
+
+
+    <hr>
+    <input type="button" id="toggle" value="toggle">
+
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        $("#toggle").click(function(){
+            // $("#target").slideToggle(800 , function() {
+            //     alert("ok")
+            // });
+
+            $("#target").fadeToggle(800 , function() {
+                alert("ok")
+            });
+        });
+
+    })
+
+</script>

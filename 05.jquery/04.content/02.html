@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+    <ul id="u">
+        <li>Java</li>
+        <li>Js</li>
+        <li>C++</li>
+        <li>elasticSearch</li>
+        <li>HBase</li>
+        <li>nginx</li>
+    </ul>
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        $("#u li").html(function(index , value){
+            return index + " : "+value + "  , " + new Date().getTime();
+        })
+
+
+    })
+
+</script>

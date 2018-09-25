@@ -31,6 +31,12 @@
         <input type="checkbox" name="skills" value="css" >css
         <input type="checkbox" name="skills" value="r">R
 
+        <hr>
+
+        <input type="text" value="text1" disabled="disabled">
+        <input type="text" value="text2">
+
+
 
 
     </form>
@@ -69,6 +75,9 @@
         for (let i = 0; i <skills_checked.length ; i++) {
             console.log(skills_checked[i].value)
         }
+
+
+        $("#f input[type=text]:disabled").css("color" , "red");
 
     })
 
