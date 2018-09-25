@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        #lists {
+            height: 500px;
+            width: 300px;
+            border: 1px solid crimson;
+        }
+
+        .item {
+            height: 100px; width: auto;
+
+            display: flex;
+            justify-content: space-between;
+
+            margin: 4px;
+        }
+
+        .content {
+            height: 100px ;
+            flex: 1;
+            background-color: lightblue;
+        }
+
+        .remove {height: 100px ; width: 50px ; background-color: lightcoral}
+
+        .xy-center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <input id="content">
+    <input type="button" id="post" value="留言">
+
+    <hr>
+
+    <div id="lists">
+
+        <!--<div class="item">-->
+            <!--<div class="content xy-center">~~~~~</div>-->
+            <!--<div class="remove xy-center">✖</div>-->
+        <!--</div>-->
+
+    </div>
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        $("#post").click(function(){
+
+            let item = $("<div class='item'><div class='content xy-center'>"+$("#content").val()+"</div></div>");
+
+            let remove = $("<div class='remove xy-center'>✖</div>");
+
+            remove.click(function(){
+                $(this).parent().fadeOut(800 , function(){
+                    $(this).remove();
+                })
+            });
+
+            item.append(remove);
+
+            // $("#lists").append(item);   //追加
+
+            $("#lists").prepend(item);              //头一个
+        })
+
+    })
+
+
+</script>
