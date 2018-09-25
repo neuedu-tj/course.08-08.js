@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<p id="a">DOM VS JQUERY</p>
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+
+    $(function(){
+
+        console.log($("#a")[0]);   // $ --> document
+
+        let a = document.getElementById("a");
+
+        console.log(a);
+
+        // document  --> $
+
+        console.log($(a));
+
+        $(a).css("color" , "blue");
+
+
+    })
+
+</script>

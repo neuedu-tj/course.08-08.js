@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h4>元素获取 - form </h4>
+
+    <form id="f">
+
+        <input type="text" id="name" value="Hello jquery"><br>
+        <input id="getInputValue" value="getInputValue" type="button">
+        <input id="setInputValue" value="setInputValue" type="button">
+
+        <hr>
+
+        <select id="city" > <!--  multiple -->
+            <option value="cn">China</option>
+            <option value="jp">Japan</option>
+            <option value="us">Us</option>
+        </select>
+        <button id="getCityValue" type="button">getCityValue</button>
+
+        <hr>
+
+        <input type="checkbox" name="skills" value="java">java
+        <input type="checkbox" name="skills" value="oracle" >oracle
+        <input type="checkbox" name="skills" value="spark">spark
+        <input type="checkbox" name="skills" value="css" >css
+        <input type="checkbox" name="skills" value="r">R
+
+
+
+    </form>
+
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+
+<script>
+
+    $(function(){
+
+
+
+        $("#getInputValue").click(function(){
+            console.log($("#name").val());
+        });
+        $("#setInputValue").click(function(){
+            $("#name").val("something....")
+        });
+
+
+        $("#getCityValue").click(function(){
+            console.log($("#city").val())
+        });
+
+        console.log($("#f input[name=skills]"));
+
+        $("#f input[name=skills]").val("css" , "spark");
+
+
+        let skills_checked = $("#f input[name=skills]:checked");
+
+        for (let i = 0; i <skills_checked.length ; i++) {
+            console.log(skills_checked[i].value)
+        }
+
+    })
+
+</script>

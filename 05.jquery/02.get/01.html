@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h4>元素获取</h4>
+
+    <ul id="u">
+        <li>java</li>
+        <li id="redis">redis</li>
+        <li>es6</li>
+        <li>spark</li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <li class="cls">java</li>
+        <li class="cls">redis</li>
+        <li>es6</li>
+        <li>spark</li>
+    </ul>
+
+</body>
+</html>
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+
+<script>
+
+    $(function(){
+
+        //by id
+        $("#redis").css('color' , 'red').css('font-size' , 20).click(function(){
+            alert(this.innerHTML)
+        });
+
+        //by className
+        // $(".cls") --> []   //甚至省去了  for 循环处理样式的问题 .. . . . . . .
+        $(".cls").css('color' , 'blue');
+
+
+
+
+
+    })
+
+</script>
