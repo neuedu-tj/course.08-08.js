@@ -83,11 +83,20 @@
 
             $("#search").keyup(function(){
 
-               let key = String.fromCharCode(event.keyCode);
+                if(event.keyCode == 38) {
+                    console.log("👆")
+                } else if( event.keyCode == 40 ) {
+                    console.log("👇")
+                } else  if( event.keyCode == 13 ) {
+                    console.log("回车")
+                } else {
 
-               let result = search(key.toLowerCase());
+                    let key = String.fromCharCode(event.keyCode);
 
-                buildItem(result);
+                    let result = search(key.toLowerCase());
+
+                     buildItem(result);
+                }
             })
 
 
@@ -95,19 +104,32 @@
 
     function buildItem( result ) {
 
+        clearChildren($("#results"));
 
-        $("#results")
         $.each(result , function(index , element) {
 
             let item = $("<div>"+element+"</div>");
             item.addClass("item").addClass("item-blur");
+
+            item.mouseover(function(){
+                $(this).removeClass("item-blur").addClass("item-foucs");
+            });
+            item.mouseout(function(){
+                $(this).removeClass("item-foucs").addClass("item-blur");
+            });
+            item.click(function(){
+
+                $("#search").val($(this).html());
+
+                clearChildren($("#results"));
+            });
 
             $("#results").append(item)
         })
     }
 
     function search(key) {
-        var result = [];
+        let result = [];
 
         $.each(storage , function(index , element){
             if(element.indexOf(key) != -1) {
@@ -115,6 +137,10 @@
             }
         });
         return result.sort();
+    }
+
+    function clearChildren( target ) {
+        target.empty();
     }
 
 
