@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .xy-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #menus {
+            height: 80px;
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+        }
+
+        .menu {
+            height: 80px;
+            flex: 1;
+            border: 1px solid crimson;
+
+
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+
+
+</head>
+<body>
+        <div id="menus">
+
+            <div class="menu" data-icon-normal="menu/聊天.svg" data-icon-press="menu/聊天-press.svg"></div>
+            <div class="menu" data-icon-normal="menu/通讯录.svg" data-icon-press="menu/通讯录-press.svg"></div>
+            <div class="menu" data-icon-normal="menu/发现.svg" data-icon-press="menu/发现-press.svg"></div>
+            <div class="menu" data-icon-normal="menu/me.svg" data-icon-press="menu/me-press.svg"></div>
+            
+        </div>
+</body>
+</html>
+
+<script src="../../lib/js/jquery-3.3.1.min.js"></script>
+<script>
+
+    $(function(){
+
+            init();
+
+            $(".menu").click(function(){
+                $(".menu").each(function(index , e ){
+                    $(e).css("background-image" , "url("+$(e).data("icon-normal")+")");
+                });
+                $(this).css("background-image" , "url("+$(this).data("icon-press")+")");
+            })
+    });
+
+
+    function init() {
+        $(".menu").each(function(index , element ) {
+            $(element).css("background-image" , "url("+$(element).data("icon-normal")+")");
+        });
+    }
+</script>
